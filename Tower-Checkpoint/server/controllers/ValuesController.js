@@ -2,6 +2,7 @@ import { Auth0Provider } from '@bcwdev/auth0provider'
 import BaseController from '../utils/BaseController'
 
 export class ValuesController extends BaseController {
+  // Testing
   constructor() {
     super('api/values')
     this.router
