@@ -4,7 +4,14 @@
             <div class="col-md-10 col-12 d-flex event-Card">
                 <div class="row justify-content-between">
                     <div class="col-md-4 col-12">
-                        <img class="img-fluid cover m-1 justify-content-bottom rounded " :src="event?.coverImg"
+                        <img v-if="event.capacity == event.ticketCount"
+                            class="img-fluid cover m-1 justify-content-bottom rounded "
+                            src="https://pluspng.com/img-png/-2112.png" alt="Picture">
+                        <img v-else-if="event.isCanceled == true"
+                            class="img-fluid cover m-1 justify-content-bottom rounded "
+                            src="https://counselling-matters.org.uk/wp-content/uploads/2020/05/cancelled-stamp.svg"
+                            alt="Picture">
+                        <img v-else class="img-fluid cover m-1 justify-content-bottom rounded " :src="event?.coverImg"
                             alt="Picture">
 
                     </div>
@@ -12,9 +19,27 @@
                         <h2>{{ event.name }}</h2>
                         <p>Date: {{ event.startDate }}</p>
                         <p>Location: {{ event.location }}</p>
-                        <p>Tickets Available: {{ event.capacity }}</p>
+                        <p>Tickets Available: {{ event.capacity - event.ticketCount }}</p>
                         <p>Details: {{ event.description }}</p>
                         <p>Tickets Sold: {{ event.ticketCount }}</p>
+                        <div>
+
+                            <button v-if="event.isCanceled == false"
+                                :disabled="isAttending && event.ticketCount == event.capacity"
+                                class="m-2 btn btn-outline-info" @click="createTicket()">Get
+                                Ticket
+                            </button>
+
+                            <button v-if="event.ticketCount == event.capacity" class="btn btn-danger">SOLD OUT</button>
+
+                        </div>
+                    </div>
+                    <div class="text-end mb-3">
+                        <button title="Cancel Event" v-if="event.creatorId == account.id" @click="cancelEvent(event.id)"
+                            :disabled="event.isCanceled == true" class=" btn btn-danger fs-5"><i
+                                class="mdi mdi-cancel "></i>
+                        </button>
+
                     </div>
                 </div>
             </div>
@@ -26,12 +51,7 @@
                 <div class="rounded m-2 p-2">
                     <h2>Ticket Holders: {{ event?.ticketCount }}</h2>
                 </div>
-                <div>
-
-                    <button class=" btn btn-outline-info" @click="createTicket()">Get Ticket </button>
-                </div>
-
-                <div class="d-flex m-2">
+                <div class="m-2">
                     <img class="rounded profile-Img" v-for="ticket in tickets " :key="ticket.id"
                         :src="ticket.profile?.picture" alt="">
                 </div>
@@ -79,7 +99,8 @@
                 <p>{{ comment.createdAt }}</p>
                 <div class="text-end">
                     <button v-if="comment.creatorId == account.id" @click="deleteComment(comment.id)"
-                        class=" delete-btn btn fs-5"><i class="mdi mdi-trash-can-outline "></i>
+                        :disabled="event.isCanceled == true" class=" btn btn-info fs-5"><i
+                            class="mdi mdi-trash-can-outline "></i>
                     </button>
 
                 </div>
@@ -150,8 +171,8 @@ export default {
             event: computed(() => AppState.activeEvent),
             comments: computed(() => AppState.comments),
             account: computed(() => AppState.account),
-            isArchived: computed(() => {
-                return AppState.comments.find(comment => comment.eventId == AppState.TowerEvents.id)
+            isAttending: computed(() => {
+                return AppState.tickets.find(ticket => ticket.accountId == AppState.account.id)
             }),
 
 
@@ -189,6 +210,16 @@ export default {
                 } catch (error) {
                     logger.error(error)
                     Pop.toast(error.message, 'error')
+                }
+            },
+            async cancelEvent() {
+                try {
+                    let event = AppState.activeEvent
+                    await towereventsService.cancelEvent(event.id)
+                    AppState.activeEvent.isCanceled = true
+                    Pop.success('Event Cancelled')
+                } catch (error) {
+                    Pop.error(error)
                 }
             }
         }

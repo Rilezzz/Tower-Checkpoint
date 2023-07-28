@@ -1,20 +1,20 @@
 <template>
   <div class="container-fluid">
     <div class="row justify-content-center m-3 ">
-      <div class="col-11 m-3 bg-info d-flex justify-content-around p-2 rounded">
-        <button class="btn btn-outline-light" @click="filterBy = ''">All</button>
-        <button class="btn btn-outline-light" @click="filterBy = 'concert'">Concerts</button>
-        <button class="btn btn-outline-light" @click="filterBy = 'convention'">Conventions</button>
-        <button class="btn btn-outline-light" @click="filterBy = 'sport'">Sports</button>
-        <button class="btn btn-outline-light" @click="filterBy = 'digital'">Online Events</button>
-        <button class="btn btn-outline-light" @click="filterBy = 'training'">Training</button>
+      <div class="col-md-8 col-11 m-3 bg-info d-flex justify-content-around p-2 rounded">
+        <button class="btn btn-outline-light w-25" @click="filterBy = ''">All</button>
+        <button class="btn btn-outline-light w-25" @click="filterBy = 'concert'">Concerts</button>
+        <button class="btn btn-outline-light w-25" @click="filterBy = 'convention'">Conventions</button>
+        <button class="btn btn-outline-light w-25" @click="filterBy = 'sport'">Sports</button>
+        <button class="btn btn-outline-light w-25" @click="filterBy = 'digital'">Online Events</button>
+        <!-- <button class="btn btn-outline-light w-25" @click="filterBy = 'training'">Training</button> -->
       </div>
     </div>
-  </div>
 
-  <div class="row justify-content-center">
-    <div class="col-md-3 col-12 m-3" v-for="towerevent in TowerEvents" :key="towerevent.id">
-      <EventCard :towerevent='towerevent' />
+    <div class="row m-auto justify-content-center">
+      <div class="col-md-3 col-12 m-3" v-for="towerevent in TowerEvents" :key="towerevent.id">
+        <EventCard :towerevent='towerevent' />
+      </div>
     </div>
   </div>
 </template>

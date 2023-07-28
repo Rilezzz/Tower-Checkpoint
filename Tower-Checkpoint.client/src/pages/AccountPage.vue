@@ -1,7 +1,7 @@
 <template>
   <div class="container-fluid">
     <div class="row justify-content-center text-shadow">
-      <h1>My Tickets: {{ event.ticketCount }}</h1>
+      <h1>My Tickets: {{ myTickets.length }}</h1>
       <div class="col-md-3 col-11 m-3 p-2 d-flex flex-column event-Card" v-for="ticket in myTickets" :key="ticket.id">
         <div class="text-center">
           <img class="ticket-Img img-fluid" src="https://www.computalabel.com/Images/C128.png" alt="">
@@ -9,7 +9,7 @@
         <div class="m-2 text-center">
           <h4>Event: {{ ticket.event?.name }}</h4>
           <p>Venue: {{ ticket.event.location }}</p>
-          <p>Date: {{ ticket.event.startDate }}</p>
+          <p>Date: {{ new Date(ticket.event.startDate) }}</p>
         </div>
         <div class="text-end">
           <button class="btn btn-info" @click="deleteTicket()">Sale Ticket </button>
@@ -33,6 +33,8 @@ export default {
       account: computed(() => AppState.account),
       event: computed(() => AppState.TowerEvents),
       tickets: computed(() => AppState.tickets),
+
+
       async deleteTicket() {
         try {
           const wantsToDeleteTicket = await Pop.confirm(`Are you sure you want to delete this post?`)
