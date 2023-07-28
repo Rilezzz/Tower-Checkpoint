@@ -21,19 +21,17 @@
         </div>
     </div>
     <div class="container-fluid">'
-        <div class="row m-auto m-2">
-            <div class=" col-8  d-flex pt-2">
-                <div class="rounded bg-info event-Card light-shadow p-2">
+        <div class="row m-auto m-2 justify-content-center">
+            <div class=" col-md-8 col-12 d-flex event-Card text-shadow pt-2">
+                <div class="rounded m-2 p-2">
                     <h2>Ticket Holders: {{ event?.ticketCount }}</h2>
+                    <button class="create-btn btn btn-outline-info" @click="createTicket()">Get Ticket </button>
                 </div>
-                <!-- <button v-if="!isCollaborator" class="btn btn-secondary" @click="becomeCollaborator()">Collab <i
-                    class="mdi mdi-heart"></i></button>
-                    <button v-else class="btn btn-secondary" @click="removeCollaborator()">Uncollab <i
-                        class="mdi mdi-heart-broken"></i></button> -->
-            </div>
-            <div class="d-flex pt-3">
-                <img class="rounded profile-Img" v-for="ticket in tickets " :key="ticket.id" :src="ticket.profile?.picture"
-                    alt="">
+
+                <div class="d-flex m-2">
+                    <img class="rounded profile-Img" v-for="ticket in tickets " :key="ticket.id"
+                        :src="ticket.profile?.picture" alt="">
+                </div>
             </div>
         </div>
     </div>
@@ -41,7 +39,7 @@
         <div class="row m-auto justify-content-around">
 
 
-            <div class="col-md-3 col-12 event-Card text-shadow p-2">
+            <div class="col-md-3 col-12 event-Card text-shadow mt-3 p-2">
                 <form @submit.prevent="createComment()">
                     <div class="mb-3">
                         <div>
@@ -132,15 +130,15 @@ export default {
                 Pop.error(error.message, 'error')
             }
         }
-        onMounted(() => {
-            getEventTicketsByEventId()
-        }
+        // onMounted(() => {
+        //     getEventTicketsByEventId()
+        // }
 
-        )
+        // )
         watchEffect(() => {
             getEventById(route.params.eventId)
             getCommentsByEventId(route.params.eventId)
-            // getEventTicketsByEventId()
+            getEventTicketsByEventId()
         })
 
         return {
@@ -178,8 +176,18 @@ export default {
                 }
 
 
+            },
+            async createTicket() {
+                try {
+                    const activeEventId = route.params.eventId
+                    const ticketData = { eventId: activeEventId }
+                    await ticketsService.createTicket(ticketData)
+                    AppState.activeEvent.ticketCount++
+                } catch (error) {
+                    logger.error(error)
+                    Pop.toast(error.message, 'error')
+                }
             }
-
         }
     },
 }
@@ -213,13 +221,14 @@ export default {
 
 }
 
-.delete-btn {
+.create-btn {
+    height: 5vw;
     width: 5vw;
     border-radius: 5px;
     border: none;
     padding: .5em;
     color: white;
-    background-color: #e714ace7;
+    background-color: #c9026fb7;
     font-weight: bold;
 }
 </style>

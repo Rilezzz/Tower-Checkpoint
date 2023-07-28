@@ -20,5 +20,18 @@ class TicketsService {
             Pop.error(error.message, 'error')
         }
     }
+
+    async createTicket(ticketData) {
+        const res = await api.post('api/tickets', ticketData)
+        logger.log('[GETTING TICKET ]', res.data)
+        AppState.myTickets.unshift(new Ticket(res.data))
+    }
+
+    async deleteTicket(ticketId) {
+        const res = await api.delete(`api/tickets/${ticketId}`)
+        logger.log('[DELETING TICKET]', res.data)
+        AppState.tickets = AppState.tickets.filter(ticket => ticket.id != ticketId)
+    }
+
 }
 export const ticketsService = new TicketsService()

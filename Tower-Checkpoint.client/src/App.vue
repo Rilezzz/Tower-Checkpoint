@@ -28,7 +28,7 @@ export default {
 @import "./assets/scss/main.scss";
 
 main {
-  background-image: url(https://i.pinimg.com/originals/3e/6d/aa/3e6daad6e6a334578b088de41584fc83.jpg);
+  background-image: url(https://i.pinimg.com/originals/3e/6d/aa/3e6daad6e6a334578b088de41584fc83.jpg );
   background-size: cover;
   background-attachment: fixed;
 }
