@@ -25,7 +25,10 @@
             <div class=" col-md-8 col-12 d-flex event-Card text-shadow pt-2">
                 <div class="rounded m-2 p-2">
                     <h2>Ticket Holders: {{ event?.ticketCount }}</h2>
-                    <button class="create-btn btn btn-outline-info" @click="createTicket()">Get Ticket </button>
+                </div>
+                <div>
+
+                    <button class=" btn btn-outline-info" @click="createTicket()">Get Ticket </button>
                 </div>
 
                 <div class="d-flex m-2">

@@ -1,10 +1,10 @@
 <template>
   <div class="container-fluid">
     <div class="row justify-content-center text-shadow">
-      <h1>My Tickets: </h1>
-      <div class="col-3 m-3 p-2 d-flex flex-column event-Card" v-for="ticket in myTickets" :key="ticket.id">
+      <h1>My Tickets: {{ event.ticketCount }}</h1>
+      <div class="col-md-3 col-11 m-3 p-2 d-flex flex-column event-Card" v-for="ticket in myTickets" :key="ticket.id">
         <div class="text-center">
-          <img class="ticket-Img" src="https://www.computalabel.com/Images/C128.png" alt="">
+          <img class="ticket-Img img-fluid" src="https://www.computalabel.com/Images/C128.png" alt="">
         </div>
         <div class="m-2 text-center">
           <h4>Event: {{ ticket.event?.name }}</h4>

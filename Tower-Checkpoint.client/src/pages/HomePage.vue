@@ -1,18 +1,17 @@
 <template>
-  <div class="container">
-    <div class="row justify-content-center p-2">
-      <div class="col-8">
-        <div class="bg-info d-flex justify-content-around p-2 rounded">
-          <button class="btn btn-outline-light" @click="filterBy = ''">All</button>
-          <button class="btn btn-outline-light" @click="filterBy = 'concert'">Concerts</button>
-          <button class="btn btn-outline-light" @click="filterBy = 'convention'">Conventions</button>
-          <button class="btn btn-outline-light" @click="filterBy = 'sport'">Sports</button>
-          <button class="btn btn-outline-light" @click="filterBy = 'digital'">Online Events</button>
-          <button class="btn btn-outline-light" @click="filterBy = 'training'">Training</button>
-        </div>
+  <div class="container-fluid">
+    <div class="row justify-content-center m-3 ">
+      <div class="col-11 m-3 bg-info d-flex justify-content-around p-2 rounded">
+        <button class="btn btn-outline-light" @click="filterBy = ''">All</button>
+        <button class="btn btn-outline-light" @click="filterBy = 'concert'">Concerts</button>
+        <button class="btn btn-outline-light" @click="filterBy = 'convention'">Conventions</button>
+        <button class="btn btn-outline-light" @click="filterBy = 'sport'">Sports</button>
+        <button class="btn btn-outline-light" @click="filterBy = 'digital'">Online Events</button>
+        <button class="btn btn-outline-light" @click="filterBy = 'training'">Training</button>
       </div>
     </div>
   </div>
+
   <div class="row justify-content-center">
     <div class="col-md-3 col-12 m-3" v-for="towerevent in TowerEvents" :key="towerevent.id">
       <EventCard :towerevent='towerevent' />
@@ -77,5 +76,10 @@ export default {
     }
   }
 
+  .event-Card {
+    background-color: rgba(0, 0, 0, 0.938);
+    border-radius: 5px;
+    box-shadow: 4px 4px rgb(255, 0, 200);
+  }
 }
 </style>

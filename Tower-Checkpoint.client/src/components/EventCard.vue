@@ -9,7 +9,7 @@
                 <p>Event Type: {{ towerevent.type }}</p>
                 <p>Ticket Number: {{ towerevent.capacity }}</p>
                 <div class="d-flex justify-content-end m-2">
-                    <button class="btn btn-success" @click="createTicket()">Get Ticket<i class="mdi "></i></button>
+                    <!-- <button class="btn btn-success" @click="createTicket()">Get Ticket<i class="mdi "></i></button> -->
                     <!-- <button class="btn btn-success" @click="deleteTicket()">Return Ticket <i
                         class="mdi mdi-trash-can-outline"></i></button> -->
                 </div>
