@@ -6,19 +6,18 @@
                 <h4>Event: {{ towerevent.name }}</h4>
                 <p>Location: {{ towerevent.location }}</p>
                 <p>Date: {{ towerevent.startDate }}</p>
-                <p>Ticket Number: {{ towerevent.capacity }}</p>
                 <p>Event Type: {{ towerevent.type }}</p>
+                <p>Ticket Number: {{ towerevent.capacity }}</p>
                 <div class="d-flex justify-content-end m-2">
                     <button class="btn btn-success" @click="createTicket()">Get Ticket<i class="mdi "></i></button>
                     <!-- <button class="btn btn-success" @click="deleteTicket()">Return Ticket <i
                         class="mdi mdi-trash-can-outline"></i></button> -->
                 </div>
             </div>
-            <div class="text-center">
-                <img class="justify-content-bottom" :src="towerevent.coverImg" alt="Picture">
-            </div>
+            <router-link :to="{ name: 'EventDetails', params: { eventId: towerevent.id } }">Click Image to View Details:<img
+                    class="justify-content-bottom rounded" :src="towerevent.coverImg" alt="Picture">
+            </router-link>
         </div>
-
     </div>
 </template>
 

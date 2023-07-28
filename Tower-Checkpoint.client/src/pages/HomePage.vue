@@ -51,8 +51,10 @@ export default {
         }
       })
     }
-  }
+  },
+  myTickets: computed(() => AppState.myTickets)
 }
+
 </script>
 
 <style scoped lang="scss">
