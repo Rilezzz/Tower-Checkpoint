@@ -24,13 +24,12 @@
                         <p>Tickets Sold: {{ event.ticketCount }}</p>
                         <div>
 
-                            <button v-if="event.isCanceled == false"
-                                :disabled="isAttending && event.ticketCount == event.capacity"
-                                class="m-2 btn btn-outline-info" @click="createTicket()">Get
+                            <button v-if="event.isCanceled == false && !isAttending" class="m-2 btn btn-outline-info"
+                                @click="createTicket()">Get
                                 Ticket
                             </button>
 
-                            <button v-if="event.ticketCount == event.capacity" class="btn btn-danger">SOLD OUT</button>
+                            <div v-else-if="event.ticketCount == event.capacity" class="btn btn-danger">EVENT CLOSED</div>
 
                         </div>
                     </div>
