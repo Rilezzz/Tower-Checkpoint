@@ -25,6 +25,7 @@ class TicketsService {
         const res = await api.post('api/tickets', ticketData)
         logger.log('[GETTING TICKET ]', res.data)
         AppState.myTickets.unshift(new Ticket(res.data))
+        AppState.tickets.push(new Ticket(res.data))
     }
 
     async deleteTicket(ticketId) {
