@@ -7,7 +7,7 @@
         <button class="btn btn-outline-light w-25" @click="filterBy = 'convention'">Conventions</button>
         <button class="btn btn-outline-light w-25" @click="filterBy = 'sport'">Sports</button>
         <button class="btn btn-outline-light w-25" @click="filterBy = 'digital'">Online Events</button>
-        <!-- <button class="btn btn-outline-light w-25" @click="filterBy = 'training'">Training</button> -->
+
       </div>
     </div>
 

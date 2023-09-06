@@ -24,11 +24,6 @@ export default {
 <style lang="scss">
 @import "./assets/scss/main.scss";
 
-main {
-  background-image: url(https://i.pinimg.com/originals/3e/6d/aa/3e6daad6e6a334578b088de41584fc83.jpg );
-  background-size: cover;
-  background-attachment: fixed;
-}
 
 :root {
   --main-height: calc(100vh - 32px - 64px);
