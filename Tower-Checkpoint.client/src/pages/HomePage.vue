@@ -1,12 +1,12 @@
 <template>
   <div class="container-fluid">
     <div class="row justify-content-center m-3 ">
-      <div class="col-md-8 col-11 m-3 bg-info d-flex justify-content-around p-2 rounded">
-        <button class="btn btn-outline-light w-25" @click="filterBy = ''">All</button>
-        <button class="btn btn-outline-light w-25" @click="filterBy = 'concert'">Concerts</button>
-        <button class="btn btn-outline-light w-25" @click="filterBy = 'convention'">Conventions</button>
-        <button class="btn btn-outline-light w-25" @click="filterBy = 'sport'">Sports</button>
-        <button class="btn btn-outline-light w-25" @click="filterBy = 'digital'">Online Events</button>
+      <div class="col-md-8 col-11 m-3 d-flex justify-content-around p-2 rounded">
+        <button class="btn btn-outline-light w-25 me-2 bg-info" @click="filterBy = ''">All</button>
+        <button class="btn btn-outline-light w-25 me-2 bg-info" @click="filterBy = 'concert'">Concerts</button>
+        <button class="btn btn-outline-light w-25 me-2 bg-info" @click="filterBy = 'convention'">Conventions</button>
+        <button class="btn btn-outline-light w-25 me-2 bg-info" @click="filterBy = 'sport'">Sports</button>
+        <button class="btn btn-outline-light w-25 bg-info" @click="filterBy = 'digital'">Online Events</button>
 
       </div>
     </div>

@@ -2,7 +2,7 @@
   <header>
     <Navbar />
   </header>
-  <main>
+  <main class="background">
     <router-view />
   </main>
 </template>
@@ -29,6 +29,13 @@ export default {
   --main-height: calc(100vh - 32px - 64px);
 }
 
+.background {
+  background-image: url(https://images.pexels.com/photos/1387174/pexels-photo-1387174.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2);
+  background-position: bottom;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-attachment: fixed;
+}
 
 footer {
   display: grid;
