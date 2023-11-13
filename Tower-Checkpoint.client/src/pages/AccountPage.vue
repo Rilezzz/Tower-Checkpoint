@@ -9,7 +9,8 @@
         <div class="m-2 text-center">
           <h4>Event: {{ ticket.event?.name }}</h4>
           <p>Venue: {{ ticket.event.location }}</p>
-          <p>Date: {{ new Date(ticket.event.startDate) }}</p>
+          <p>Date: {{ new Date(ticket.event.startDate).toLocaleDateString() }}</p>
+          <p>Time: {{ new Date(ticket.event.startDate).toLocaleTimeString() }}</p>
         </div>
         <div class="text-end">
           <button class="btn btn-info" @click="deleteTicket()">Sale Ticket </button>
@@ -75,7 +76,7 @@ export default {
 }
 
 .event-Card {
-  background-color: rgba(0, 0, 0, 0.938);
+  background-color: rgba(40, 16, 36, 0.938);
   border-radius: 5px;
   box-shadow: 4px 4px rgb(255, 0, 200);
 }

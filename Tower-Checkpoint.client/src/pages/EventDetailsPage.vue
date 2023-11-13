@@ -17,7 +17,8 @@
                     </div>
                     <div class="col-md-7 col-12 p-2">
                         <h2>{{ event.name }}</h2>
-                        <p>Date: {{ event.startDate }}</p>
+                        <p>Date: {{ new Date(event.startDate).toLocaleDateString() }}</p>
+                        <p>Time: {{ new Date(event.startDate).toLocaleTimeString() }}</p>
                         <p>Location: {{ event.location }}</p>
                         <p>Tickets Available: {{ event.capacity - event.ticketCount }}</p>
                         <p>Details: {{ event.description }}</p>
@@ -47,11 +48,11 @@
     <div class="container-fluid">'
         <div class="row m-auto m-2 justify-content-center">
             <div class=" col-md-8 col-12 d-flex event-Card text-shadow pt-2">
-                <div class="rounded m-2 p-2">
+                <div class=" rounded m-2 p-2">
                     <h2>Ticket Holders: {{ event?.ticketCount }}</h2>
                 </div>
-                <div class="m-2">
-                    <img class="rounded profile-Img" v-for="ticket in tickets " :key="ticket.id"
+                <div class="m-3">
+                    <img class="rounded profile-Img me-1" v-for="ticket in tickets " :key="ticket.id"
                         :src="ticket.profile?.picture" alt="">
                 </div>
             </div>

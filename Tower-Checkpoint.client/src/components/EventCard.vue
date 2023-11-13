@@ -5,11 +5,10 @@
             <div class="card bg-dark mb-2 p-1">
                 <h4>Event: {{ towerevent.name }}</h4>
                 <p>Location: {{ towerevent.location }}</p>
-                <p>Date: {{ towerevent.startDate }}</p>
+                <p>Date:{{ new Date(towerevent.startDate).toLocaleDateString() }}</p>
+                <p>Time:{{ new Date(towerevent.startDate).toLocaleTimeString() }}</p>
                 <p>Event Type: {{ towerevent.type }}</p>
                 <p>Ticket Number: {{ towerevent.capacity }}</p>
-                <div class="d-flex justify-content-end m-2">
-                </div>
             </div>
             <router-link :to="{ name: 'EventDetails', params: { eventId: towerevent.id } }">Click Image to View Details:<img
                     class="justify-content-bottom rounded" :src="towerevent.coverImg" alt="Picture">
